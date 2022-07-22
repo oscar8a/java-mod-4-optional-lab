@@ -6,12 +6,14 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Enter a book name to see if it exists. Program returns book name and author.");
         Scanner scanner = new Scanner(System.in);
 
         String bookName = scanner.nextLine();
         Optional<String> optAuthor = Book.getAuthor(bookName);
 
-        // write your code here
+        // optAuthor becomes authorName in the lambda func
+        optAuthor.ifPresentOrElse(authorName -> System.out.println(bookName + " written by " + authorName), () -> System.out.println("Unknown"));
     }
 }
 
